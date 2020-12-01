@@ -12,6 +12,7 @@ import com.facebook.react.uimanager.ViewManager;
 import com.haxifang.ad.AdManager;
 import com.haxifang.ad.BannerAdManage;
 import com.haxifang.ad.DrawFeedViewManager;
+import com.haxifang.ad.ExpressAd;
 import com.haxifang.ad.FeedAdViewManager;
 import com.haxifang.ad.FullScreenVideo;
 import com.haxifang.ad.RewardVideo;
@@ -25,6 +26,7 @@ public class AdPackage implements ReactPackage {
         modules.add(new SplashAd(reactContext));
         modules.add(new FullScreenVideo(reactContext));
         modules.add(new RewardVideo(reactContext));
+        modules.add(new ExpressAd(reactContext));
         return modules;
     }
 

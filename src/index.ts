@@ -6,6 +6,7 @@ import startRewardVideo from './RewardVideo';
 import DrawFeed from './DrawFeed';
 import Feed from './Feed';
 import Banner from './Banner';
+import startExpress from './Express';
 
 const { AdManager } = NativeModules;
 
@@ -40,5 +41,6 @@ export default {
     startRewardVideo,
     DrawFeed,
     Feed,
-    Banner
+    Banner,
+    startExpress
 };

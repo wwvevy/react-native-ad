@@ -10,5 +10,6 @@ import FullScreenVideo from './src/FullScreenVideo'; // 全屏视频广告对接
 import RewardVideo from './src/RewardVideo'; // 激励视频广告对接示例
 import DrawFeed from './src/DrawFeed'; //  DrawFeed 广告对接示例
 import Feed from './src/Feed'; //  Feed 广告对接示例
+import ExpressAd from './src/ExpressAd'; // 插屏广告示列
 
-AppRegistry.registerComponent(appName, () => Feed);
+AppRegistry.registerComponent(appName, () => ExpressAd);
