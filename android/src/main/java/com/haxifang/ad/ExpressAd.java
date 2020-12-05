@@ -15,6 +15,7 @@ import com.bytedance.sdk.openadsdk.TTAdDislike;
 import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTNativeExpressAd;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -122,22 +123,34 @@ public class ExpressAd extends ReactContextBaseJavaModule {
             @Override
             public void onAdDismiss() {
                 Log.d(TAG, "广告关闭");
+                WritableMap params = Arguments.createMap();
+                params.putBoolean("onAdClose", true);
+                sendEvent("onAdClose", params);
             }
 
             @Override
             public void onAdClicked(View view, int type) {
-                Log.d(TAG, "广告被点击");;
+                Log.d(TAG, "广告被点击");
+                WritableMap params = Arguments.createMap();
+                params.putBoolean("onAdClick", true);
+                sendEvent("onAdClick", params);
             }
 
             @Override
             public void onAdShow(View view, int type) {
-                Log.d(TAG, "广告展示");;
+                Log.d(TAG, "广告展示");
+                WritableMap params = Arguments.createMap();
+                params.putBoolean("onAdShow", true);
+                sendEvent("onAdShow", params);
             }
 
             @Override
             public void onRenderFail(View view, String msg, int code) {
                 Log.e("ExpressView", "render fail:" + (System.currentTimeMillis() - startTime));
                 TToast.show(mContext, msg + " code:" + code);
+                WritableMap params = Arguments.createMap();
+                params.putBoolean("onAdError", true);
+                sendEvent("onAdError", params);
             }
 
             @Override
@@ -145,6 +158,9 @@ public class ExpressAd extends ReactContextBaseJavaModule {
                 Log.e("ExpressView", "渲染成功,render suc:" + (System.currentTimeMillis() - startTime));
                 //返回view的宽高 单位 dp
                 mTTAd.showInteractionExpressAd(mContext.getCurrentActivity());
+                WritableMap params = Arguments.createMap();
+                params.putBoolean("onAdLoaded", true);
+                sendEvent("onAdLoaded", params);
             }
         });
         bindDislike(ad, false);

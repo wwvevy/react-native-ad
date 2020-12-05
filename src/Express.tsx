@@ -26,7 +26,7 @@ export default function (info: expressInfo) {
             if (listenerCache[type]) {
                 listenerCache[type].remove();
             }
-            return (listenerCache[type] = eventEmitter.addListener('Express-' + type, (event: any) => {
+            return (listenerCache[type] = eventEmitter.addListener('ExpressAd-' + type, (event: any) => {
                 callback(event);
             }));
         },

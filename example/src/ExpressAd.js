@@ -23,9 +23,12 @@ export default function ExpressAd() {
           borderRadius: 50,
         }}
         onPress={() => {
-          const rewardVideo = ad.startExpress({
+          const expressAd = ad.startExpress({
             appid: '5112984',
             codeid: '945652198',
+          });
+          expressAd.subscribe('onAdClose', (event) => {
+            console.log('广告关闭', event);
           });
         }}>
         <Text style={{textAlign: 'center'}}> Start ExpressAd</Text>
